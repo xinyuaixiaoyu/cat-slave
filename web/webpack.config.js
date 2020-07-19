@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StyleWebpackPlugin = require('stylelint-webpack-plugin');
+const isDev = process.env.NODE_ENV === 'development';
+console.log(isDev);
 
 module.exports = {
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -12,9 +13,27 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js|jsx$/,
         use: [
-          'babel-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                [
+                  'react-css-modules',
+                  {
+                    generateScopedName:
+                      '[path][name]__[local]--[hash:base64:5]',
+                    filetypes: {
+                      '.less': {
+                        syntax: 'postcss-less',
+                      },
+                    },
+                  },
+                ],
+              ],
+            },
+          },
           {
             loader: 'eslint-loader',
             options: {
@@ -26,15 +45,36 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+            },
+          },
+        ],
       },
       {
-        test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader'],
+        test: /.less$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+            },
+          },
+          'less-loader',
+        ],
       },
     ],
   },
-  devtool: 'cheap-module-source-map',
+  // devtool: 'cheap-module-source-map',
   devServer: {
     open: true,
     port: 8000,
@@ -50,14 +90,6 @@ module.exports = {
         minifyCSS: true,
       },
       inject: true,
-    }),
-    new StyleWebpackPlugin({
-      context: 'src',
-      configFile: path.resolve(__dirname, './.stylelintrc.js'),
-      files: '**/*.less',
-      failOnError: false,
-      quiet: true,
-      syntax: 'less',
     }),
   ],
 };

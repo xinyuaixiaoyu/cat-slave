@@ -16,7 +16,7 @@ function Manta() {
   };
 
   return (
-    <div className="manta">
+    <div styleName="manta">
       <div>挺牛逼个博客</div>
       <button onClick={reduce}>-</button>
       <div>{num}</div>
