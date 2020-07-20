@@ -1,28 +1,43 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDom from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import Home from '@/components/Home/index';
+import Navigation from '@/components/Navigation/index';
+import RouterConfig from '@/config/router.config';
 import '@babel/polyfill';
 import './index.less';
 
-function Manta() {
-  const [num, setNum] = useState(0);
-
-  const add = () => {
-    setNum(num + 1);
-    console.log(styles);
-  };
-
-  const reduce = () => {
-    setNum(num - 1);
-  };
-
+const App = () => {
   return (
-    <div styleName="manta">
-      <div>挺牛逼个博客</div>
-      <button onClick={reduce}>-</button>
-      <div>{num}</div>
-      <button onClick={add}>+</button>
-    </div>
+    <Router>
+      <div styleName="container">
+        <div styleName="left-container">
+          <Home></Home>
+        </div>
+        <div styleName="right-container">
+          <Navigation></Navigation>
+          <Switch>
+            {RouterConfig.map((item) => {
+              return (
+                <Route
+                  path={item.path}
+                  component={item.Component()}
+                  exact={item.exact}
+                  key={item.path}
+                ></Route>
+              );
+            })}
+            <Redirect to="/article"></Redirect>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
-ReactDOM.render(<Manta />, document.getElementById('App'));
+ReactDom.render(<App />, document.getElementById('App'));

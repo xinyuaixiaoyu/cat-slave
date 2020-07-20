@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
-console.log(isDev);
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -74,11 +73,18 @@ module.exports = {
       },
     ],
   },
-  // devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   devServer: {
     open: true,
     port: 8000,
     hot: true,
+    historyApiFallback: true,
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src/'),
+    },
+    extensions: ['.js', '.jsx', '.less', '.css'],
   },
   plugins: [
     new HtmlWebpackPlugin({
