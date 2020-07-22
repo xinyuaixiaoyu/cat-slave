@@ -6,7 +6,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import Home from '@/components/Home/index';
+import Introduction from '@/components/Introduction/index';
 import Navigation from '@/components/Navigation/index';
 import RouterConfig from '@/config/router.config';
 import '@babel/polyfill';
@@ -17,10 +17,12 @@ const App = () => {
     <Router>
       <div styleName="container">
         <div styleName="left-container">
-          <Home></Home>
+          <div styleName="content">
+            <Introduction></Introduction>
+            <Navigation></Navigation>
+          </div>
         </div>
         <div styleName="right-container">
-          <Navigation></Navigation>
           <Switch>
             {RouterConfig.map((item) => {
               return (
@@ -32,7 +34,7 @@ const App = () => {
                 ></Route>
               );
             })}
-            <Redirect to="/article"></Redirect>
+            <Redirect to="/"></Redirect>
           </Switch>
         </div>
       </div>

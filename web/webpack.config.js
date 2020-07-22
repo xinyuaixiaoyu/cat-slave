@@ -71,6 +71,18 @@ module.exports = {
           'less-loader',
         ],
       },
+      {
+        test: /\.(png|svg|jpg|gif|ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              outputPath: './assets/',
+            },
+          },
+        ],
+      },
     ],
   },
   devtool: 'cheap-module-source-map',

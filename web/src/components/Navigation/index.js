@@ -8,9 +8,11 @@ const Navigation = () => {
     <div styleName="container">
       {RouterConfig.map((item) => {
         return (
-          <NavLink key={item.path} to={item.path}>
-            <div styleName="title">{item.title}</div>
-          </NavLink>
+          <div styleName="title-container" key={item.path}>
+            <NavLink to={item.path}>
+              <div styleName="title">{item.title}</div>
+            </NavLink>
+          </div>
         );
       })}
     </div>

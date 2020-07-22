@@ -1,7 +1,8 @@
 import React from 'react';
+import './index.less';
 
 const Home = () => {
-  return <div>挺牛逼个主页</div>;
+  return <div>首页</div>;
 };
 
 export default Home;
