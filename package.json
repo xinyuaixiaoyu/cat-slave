@@ -9,5 +9,16 @@
     "dev": "cd web && npm run dev"
   },
   "author": "zxy",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^9.1.0",
+    "mongoose": "^5.9.25"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-koa": "^2.0.2"
+  }
 }

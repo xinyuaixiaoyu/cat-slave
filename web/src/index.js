@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Introduction from '@/components/Introduction/index';
 import Navigation from '@/components/Navigation/index';
+import Footer from '@/components/Footer/index';
 import RouterConfig from '@/config/router.config';
 import '@babel/polyfill';
 import './index.less';
@@ -17,10 +18,9 @@ const App = () => {
     <Router>
       <div styleName="container">
         <div styleName="left-container">
-          <div styleName="content">
-            <Introduction></Introduction>
-            <Navigation></Navigation>
-          </div>
+          <Introduction></Introduction>
+          <Navigation></Navigation>
+          <Footer></Footer>
         </div>
         <div styleName="right-container">
           <Switch>
@@ -37,6 +37,7 @@ const App = () => {
             <Redirect to="/"></Redirect>
           </Switch>
         </div>
+        <div styleName="cover"></div>
       </div>
     </Router>
   );

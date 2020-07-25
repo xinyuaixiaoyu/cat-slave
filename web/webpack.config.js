@@ -17,6 +17,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              cacheDirectory: true,
               plugins: [
                 [
                   'react-css-modules',
@@ -28,6 +29,14 @@ module.exports = {
                         syntax: 'postcss-less',
                       },
                     },
+                  },
+                ],
+                [
+                  'import',
+                  {
+                    libraryName: 'antd',
+                    libraryDirectory: 'es',
+                    style: true,
                   },
                 ],
               ],
@@ -43,7 +52,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           {
@@ -51,24 +61,41 @@ module.exports = {
             options: {
               modules: {
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                importLoaders: 2,
               },
             },
           },
         ],
       },
       {
-        test: /.less$/,
+        test: /\.(css|less)$/,
+        include: /node_modules/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              modules: {
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                importLoaders: 2,
               },
             },
           },
-          'less-loader',
         ],
       },
       {
@@ -91,6 +118,13 @@ module.exports = {
     port: 8000,
     hot: true,
     historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: { api: '/' },
+      },
+    },
   },
   resolve: {
     alias: {

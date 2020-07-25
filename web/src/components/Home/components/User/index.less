@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+        margin-top: 50px;
+        color: #fff;
+        font-size: 50px;
+        letter-spacing: 3px;
+        line-height: 80px;
+    }
+
+    .description {
+        color: #fff;
+        max-width: 600px;
+        line-height: 24px;
+    }
+
+    .input_container {
+        margin: 10px 0;
+    }
+
+    .inputItem {
+        width: 300px;
+        border: 1px solid #fff;
+        border-radius: 20px;
+        margin: 10px 0;
+
+        input {
+            width: 280px;
+            padding: 10px 0 10px 20px;
+            background: none;
+            color: #fff;
+            border: none;
+
+            &::-webkit-input-placeholder {
+                color: #fff;
+            }
+
+            &::-ms-input-placeholder {
+                color: #fff;
+            }
+        }
+    }
+
+    .button {
+        width: 300px;
+        padding: 10px 0;
+        border-radius: 20px;
+        text-align: center;
+        color: #fff;
+        background-color: #1abc9c;
+        cursor: pointer;
+    }
+
+    .tab_container {
+        width: 300px;
+        margin-top: 10px;
+        padding: 10px 0;
+        display: flex;
+        color: #fff;
+        justify-content: center;
+
+        .forget {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .tab_btn {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    }
+}
