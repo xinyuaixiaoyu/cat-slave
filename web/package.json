@@ -46,10 +46,10 @@
     "@babel/runtime": "^7.10.5",
     "antd": "^4.4.3",
     "babel-plugin-react-css-modules": "^5.2.6",
-    "dva": "^2.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "wangeditor": "^3.1.1"
   }
 }
