@@ -1,10 +1,20 @@
 .admin {
-    width: 100%;
-    height: 100%;
-    background: #fff;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	animation: bottomMove 0.6s linear;
 }
 
 .container {
-    height: 100%;
-    padding: 20px 40px;
+	height: 100%;
+	padding: 20px 40px;
+}
+
+@keyframes bottomMove {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
 }

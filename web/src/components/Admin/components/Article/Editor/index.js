@@ -1,24 +1,13 @@
-/* eslint-disable react/no-string-refs */
 import React from 'react';
-import E from 'wangeditor';
+import BraftEditor from 'braft-editor';
+import 'braft-editor/dist/index.css';
 
-class Editor extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    const editor = new E(this.refs.editorEleme);
-    editor.customConfig.onchange = (html) => {
-      this.props.setEditor(html);
-    };
-    editor.customConfig.uploadImgShowBase64 = true;
-    editor.create();
-  }
-
-  render() {
-    return <div ref="editorEleme"></div>;
-  }
-}
+const Editor = ({ onChange, value }) => {
+	return (
+		<div style={{ border: '1px solid #d9d9d9' }}>
+			<BraftEditor value={value} onChange={onChange} />
+		</div>
+	);
+};
 
 export default Editor;

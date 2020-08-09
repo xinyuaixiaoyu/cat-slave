@@ -1,69 +1,77 @@
 .container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: scroll;
-    background: #fff;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-y: scroll;
+	background: #fff;
+	animation: rightMove 0.6s linear;
 
-    .article-item-head {
-        width: 100%;
-        padding: 10px 20px;
-        border-bottom: 1px solid #eef2f8;
-    }
+	.item {
+		width: 100%;
+		padding: 10px 20px;
+		border-bottom: 1px solid #eef2f8;
+		display: flex;
+		align-items: center;
+	}
 
-    .article-item {
-        width: 100%;
-        padding: 10px 20px;
-        border-bottom: 1px solid #eef2f8;
-        display: flex;
-        align-items: center;
-    }
+	.title {
+		cursor: pointer;
+		word-break: initial;
+		font-weight: 700;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 28px;
+		margin-bottom: 5px;
+	}
 
-    .title {
-        cursor: pointer;
-        word-break: initial;
-        font-weight: 700;
-        font-family: "Open Sans", sans-serif;
-        font-size: 28px;
-        margin-bottom: 5px;
-    }
+	.date {
+		color: #9eabb3;
+		font-size: 13px;
+		line-height: 15px;
+		margin-bottom: 20px;
+	}
 
-    .date {
-        color: #9eabb3;
-        font-size: 13px;
-        line-height: 15px;
-        margin-bottom: 20px;
-    }
+	.describe {
+		font-family: Merriweather, serif;
+		color: #5d686f;
+		font-size: 16px;
+		font-weight: 500;
+		margin-bottom: 15px;
+	}
 
-    .description {
-        font-family: Merriweather, serif;
-        color: #5d686f;
-        font-size: 16px;
-        font-weight: 500;
-        margin-bottom: 15px;
-    }
+	.button {
+		color: #349ef3;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 13px;
+		font-weight: 400;
+		margin-bottom: 15px;
+		cursor: pointer;
+	}
 
-    .button {
-        color: #349ef3;
-        font-family: "Open Sans", sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
+	.detail-container {
+		width: 100%;
+		height: 100%;
+		padding: 10px 20px;
+	}
 
-    .first-img {
-        display: inline-block;
-        width: 100%;
-        height: 200px;
-    }
+	.cancel-btn {
+		width: 100px;
+		text-align: center;
+		color: #fff;
+		background-color: #d9534f;
+		border: 2px solid #d9534f;
+		font-size: 18px;
+		line-height: 30px;
+		cursor: pointer;
+	}
+}
 
-    .img {
-        display: block;
-        width: 140px;
-        height: 140px;
-        margin-right: 15px;
-    }
+@keyframes rightMove {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }

@@ -1,20 +1,25 @@
 .container {
-  padding: 20px 0 30px;
-  display: flex;
-  flex-wrap: wrap;
+	margin-top: 20px;
+	display: flex;
+	.left {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		align-items: center;
+	}
+	.right {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		align-items: center;
+	}
 
-  .title-container {
-    flex-basis: 50%;
-  }
-
-  .title {
-    line-height: 50px;
-    color: #fff;
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .title:hover {
-    color: #f54c53;
-  }
+	.title {
+		line-height: 50px;
+		color: #fff;
+		font-size: 16px;
+		&:hover {
+			color: #f54c53;
+		}
+	}
 }
