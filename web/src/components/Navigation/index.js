@@ -1,22 +1,15 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import RouterConfig from '@/config/router.config';
 import JumpLink from '@/config/jumpLink';
-import { queryAdmin } from '@/service/user';
+import { Context } from '@/index.js';
 import './index.less';
 
 const Navigation = () => {
-	const [isAdmin, changeStatus] = useState(false);
-	const getAdminStatus = async () => {
-		const { success, admin = false } = await queryAdmin();
-		if (success) {
-			changeStatus(admin);
-		}
-	};
-	useEffect(() => {
-		getAdminStatus();
-	}, []);
+	const navContext = useContext(Context);
+	const { isAdmin } = navContext.state;
+
 	return (
 		<div styleName="container">
 			<div styleName="left">

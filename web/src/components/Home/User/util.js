@@ -45,7 +45,7 @@ export function userConfig(isLogin) {
 }
 
 export const UserRegMap = new Map([
-	['name', /^[a-zA-Z0-9_-]{8,16}$/],
+	['name', /^[a-zA-Z0-9_-]{3,16}$/],
 	['email', /^([a-zA-z]|[0-9])(\w|-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/],
 	['password', /^(\w){6,16}$/],
 	['repeatPassword', /^(\w){6,16}$/],

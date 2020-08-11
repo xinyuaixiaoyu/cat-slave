@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { userConfig, UserRegMap } from './util';
 import { login, register } from '@/service/user';
 import cookie from 'react-cookies';
+import Message from '@/components/Message';
 import './index.less';
 
 const User = ({ onLogin }) => {
@@ -82,6 +83,7 @@ const User = ({ onLogin }) => {
 		if (isLogin) {
 			const { success, _id } = await login(loginData);
 			if (success) {
+				Message.success('登陆成功');
 				cookie.save('userId', btoa(_id));
 				onLogin();
 			}

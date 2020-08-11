@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { userConfig, UserRegMap } from '../User/util';
 import { updateUser } from '@/service/user';
+import Message from '@/components/Message';
 import './index.less';
 
 const EditUser = ({ userData, cancelEdit, queryUserData }) => {
@@ -74,6 +75,7 @@ const EditUser = ({ userData, cancelEdit, queryUserData }) => {
 				avator,
 			});
 			if (res.success) {
+				Message.success('编辑成功');
 				cancelEdit();
 				queryUserData();
 			}

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import Loading from '../components/Loading';
+import Loading from '@/components/Loading';
+import Message from '@/components/Message';
 import cookies from 'react-cookies';
 
 axios.defaults.baseUrl = 'http://catslave.applinzi.com';
@@ -54,6 +55,7 @@ export function get(url, params) {
 			})
 			.catch((err) => {
 				Loading.hide();
+				Message.error(err.statusText || '网络异常，请稍后重试');
 				reject(err);
 			});
 	});
@@ -76,6 +78,7 @@ export function post(url, params) {
 			})
 			.catch((err) => {
 				Loading.hide();
+				Message.error(err.statusText || '网络异常，请稍后重试');
 				reject(err);
 			});
 	});

@@ -7,6 +7,5 @@ module.exports = {
   ],
   USER_API: [
     '/updateUser', //修改个人信息
-    '/queryCategory'
-  ]
-}
+  ],
+};
